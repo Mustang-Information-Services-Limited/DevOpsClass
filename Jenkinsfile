@@ -3,7 +3,7 @@ pipeline {
 
    // tools {
         // Install the Maven version configured as "M3" and add it to the path.
-       // maven "M3" is the tool that we will use to build this project
+       // maven "M3" is the tool that we will use to build this project is protected
    // }
 
     stages {
