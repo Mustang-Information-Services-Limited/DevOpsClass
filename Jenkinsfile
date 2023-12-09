@@ -46,7 +46,7 @@ stage('Copy File to EC2') {
                     def remoteDirectory = '/home/ec2-user/devops/'
 
                     // Use the scp command to copy the file
-                    bat "winscp -i "${ec2KeyPath}" "${localFilePath}" ${ec2Username}@${ec2IpAddress}:${remoteDirectory}"
+                    bat "scp -i "${ec2KeyPath}" "${localFilePath}" ${ec2Username}@${ec2IpAddress}:${remoteDirectory}"
                 }
             }
         }
