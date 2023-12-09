@@ -46,13 +46,11 @@ stage('Copy File to EC2') {
                     def remoteDirectory = '/home/ec2-user/devops/'
 
                     // Use the scp command to copy the file
-                    bat """
-                        scp -i "${ec2KeyPath}" "${localFilePath}" ${ec2Username}@${ec2IpAddress}:${remoteDirectory}
-                    """
+                    bat "winscp -i "${ec2KeyPath}" "${localFilePath}" ${ec2Username}@${ec2IpAddress}:${remoteDirectory}"
                 }
             }
         }
-       // This is the end of the Amazon Fie Copy.
+       // This is the end of the Amazon File Copy.
           
     }	       
           post {
