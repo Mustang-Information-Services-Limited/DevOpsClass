@@ -27,8 +27,34 @@ pipeline {
                 // To run Maven on a Windows agent, use
                  bat "mvnw.cmd test"
             }
-       }       
-    }
+       }
+       
+       
+
+// This is the beginning of the Amazon Fie Copy.
+
+
+
+stage('Copy File to EC2') {
+            steps {
+                script {
+                    // Replace placeholders with your actual values
+                    def localFilePath = 'C:\\Users\\cmdch\\Documents\\Cloud Engineer Training\\something_light.txt'
+                    def ec2Username = 'ec2-user'
+                    def ec2IpAddress = '18.189.27.159'
+                    def ec2KeyPath = 'C:\\Users\\cmdch\\Documents\\Cloud Engineer Training\\CloudTraining2023.pem'
+                    def remoteDirectory = '/home/ec2-user/devops/'
+
+                    // Use the scp command to copy the file
+                    bat """
+                        scp -i "${ec2KeyPath}" "${localFilePath}" ${ec2Username}@${ec2IpAddress}:${remoteDirectory}
+                    """
+                }
+            }
+        }
+       // This is the end of the Amazon Fie Copy.
+          
+    }	       
           post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
